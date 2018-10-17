@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
 
         Intent intent = new Intent(MainActivity.this, CoinDetails.class);
         intent.putExtra("id", item.getId());
-        intent.putExtra("namee", item.getName());
+        intent.putExtra("name", item.getName());
         intent.putExtra("symbol", item.getSymbol());
         intent.putExtra("price", item.getPrice_usd());
         intent.putExtra("price_btc", item.getPrice_btc());

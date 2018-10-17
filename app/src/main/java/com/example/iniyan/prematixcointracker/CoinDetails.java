@@ -1,5 +1,6 @@
 package com.example.iniyan.prematixcointracker;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +18,7 @@ import static com.example.iniyan.prematixcointracker.Common.imageUrl;
 public class CoinDetails extends AppCompatActivity implements ICoinDetails {
     ImageView imageView;
     TextView txt_name, txt_symbol, txt_price, txt_price_btc, txt_percent_1hr, txt_percent_24hr, txt_percent_7d, txt_percent_twentyfour_volume, txt_rank,
-            txt_value, txt_market_cap, txt_availablesupply, txt_max_supply, txt_lastupdate;
+            txt_marketcap, txt_totalamount, txt_value, txt_market_cap, txt_availablesupply, txt_max_supply, txt_lastupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class CoinDetails extends AppCompatActivity implements ICoinDetails {
         txt_name = (TextView) findViewById(R.id.name);
 
         txt_symbol = (TextView) findViewById(R.id.symbol);
-      //  txt_price = (TextView) findViewById(R.id.priceUsd);
+        txt_price = (TextView) findViewById(R.id.priceusd);
         txt_price_btc = (TextView) findViewById(R.id.pricebtc);
         txt_percent_1hr = (TextView) findViewById(R.id.percentchange_1h);
         txt_percent_24hr = (TextView) findViewById(R.id.percentchange_24h);
@@ -42,10 +43,12 @@ public class CoinDetails extends AppCompatActivity implements ICoinDetails {
         txt_market_cap = (TextView) findViewById(R.id.marketcap);
         txt_availablesupply = (TextView) findViewById(R.id.circulatingsupply);
         txt_value = (TextView) findViewById(R.id.value);
+        txt_totalamount = (TextView) findViewById(R.id.totalamount);
+        txt_marketcap = (TextView) findViewById(R.id.marketcap);
 
 
-//        txt_max_supply = (TextView) findViewById(R.id.txt_name);
-//        txt_lastupdate = (TextView) findViewById(R.id.txt_name);
+        txt_max_supply = (TextView) findViewById(R.id.max_supply);
+        txt_lastupdate = (TextView) findViewById(R.id.lastupdate);
 
 
         String id = getIntent().getExtras().getString("id");
@@ -66,10 +69,14 @@ public class CoinDetails extends AppCompatActivity implements ICoinDetails {
         Picasso.with(this).load(imageUrl +
                 symbol.toLowerCase() + ".png").into(imageView);
 
+
+        txt_lastupdate.setText(lastupdate);
+        txt_max_supply.setText(max_supply);
+        txt_totalamount.setText(totalsupply);
         txt_name.setText(name);
         txt_value.setText(percent_24h);
         txt_price_btc.setText(price_btc);
-       // txt_price.setText(price);
+        txt_price.setText(price);
         txt_availablesupply.setText(availablesupply);
         txt_percent_1hr.setText(percent_1hr);
         txt_percent_24hr.setText(percent_24h);
@@ -78,6 +85,17 @@ public class CoinDetails extends AppCompatActivity implements ICoinDetails {
         txt_percent_twentyfour_volume.setText(twentyfour_volume);
         txt_percent_7d.setText(percent_7d);
         txt_symbol.setText(symbol);
+        txt_marketcap.setText(market_cap);
+
+
+        txt_percent_1hr.setTextColor(percent_1hr.contains("-") ? Color.parseColor("#FF0000") : Color.parseColor("#32CD32"));
+        txt_percent_7d.setTextColor(percent_7d.contains("-") ? Color.parseColor("#FF0000") : Color.parseColor("#32CD32"));
+        txt_percent_24hr.setTextColor(percent_24h.contains("-") ? Color.parseColor("#FF0000") : Color.parseColor("#32CD32"));
+
+
+        txt_value.setTextColor(percent_24h.contains("-") ? Color.parseColor("#FF0000") : Color.parseColor("#32CD32"));
+
+
     }
 
 

@@ -45,21 +45,25 @@
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center_vertical"
                 android:layout_weight="8"
+
                 app:shimmer_duration="1000">
 
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
                     android:fontFamily="serif-monospace"
 
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
             </com.facebook.shimmer.ShimmerFrameLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -136,20 +140,19 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
                         android:text="Symbol:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/symbol"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="1"
+                        android:layout_weight="2"
 
                         android:gravity="right"
                         android:text=""
@@ -172,19 +175,20 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
                         android:text="Rank:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/rank"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+
+                        android:layout_weight="2"
+
                         android:gravity="right"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -206,19 +210,18 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
                         android:text="Price BTC:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/pricebtc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -240,19 +243,51 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:text="Price Usd:"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/priceusd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="2"
+                        android:gravity="right"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+
+                        android:layout_weight="2"
                         android:gravity="left"
                         android:text="24th Volume:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/twentyFourHour_volume"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -274,21 +309,20 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
                         android:text="Market Cap:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/marketcap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text=""
+
+                        android:layout_weight="2"
+                        android:gravity="left"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -308,19 +342,18 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
-                        android:text="Circulating Supply:"
+                        android:text="Available Supply:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/circulatingsupply"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -342,19 +375,18 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
-                        android:text="Percent Change 1h:"
+                        android:text="Percent 1h:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/percentchange_1h"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -376,19 +408,18 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
-                        android:text="Percent Change 24h:"
+                        android:text="Percent  24h:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/percentchange_24h"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
 
@@ -411,19 +442,85 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
 
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="left"
-                        android:text="Percent Change 7d:"
+                        android:text="Percent  7d:"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/percentchange_7d"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="2"
+                        android:gravity="right"
+                        android:text=""
+
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_weight="1"
+
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:text="Maximum Supply"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/max_supply"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="2"
+                        android:gravity="right"
+                        android:text=""
+
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:text="Last Update"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/lastupdate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="2"
                         android:gravity="right"
                         android:text=""
 

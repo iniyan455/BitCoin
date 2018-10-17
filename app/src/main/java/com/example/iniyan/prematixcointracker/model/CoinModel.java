@@ -1,6 +1,10 @@
 package com.example.iniyan.prematixcointracker.model;
 
-public class CoinModel {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class CoinModel implements Serializable {
 
     public String id;
     public String name;
@@ -11,6 +15,8 @@ public class CoinModel {
     public String percent_change_7d;
     public String rank;
     public String price_btc;
+
+    @SerializedName("24h_volume_usd")
     public String twentyfour_volume;
     public String market_cap_usd;
     public String available_supply;
