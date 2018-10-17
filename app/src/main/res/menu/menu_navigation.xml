@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/buycryptocurrency"
+            android:title="Buy CryptoCurrency"
+            android:icon="@drawable/ic_cryptocurrencybuy"/>
+
+        <item
+            android:id="@+id/favourites"
+            android:title="Favorites"
+            android:icon="@drawable/ic_favorite"/>
+
+        <item
+            android:id="@+id/alarm"
+            android:title="Alarm"
+            android:icon="@drawable/ic_alarm"/>
+
+
+        <item
+            android:id="@+id/cryptodaily"
+            android:title="CryptoDaily"
+            android:icon="@drawable/ic_money"/>
+        <item
+            android:id="@+id/like"
+            android:title="Like This App"
+            android:icon="@drawable/ic_like"/>
+        <item
+            android:id="@+id/share"
+            android:title="Share App"
+            android:icon="@drawable/ic_share"/>
+        <item
+            android:id="@+id/report_bug"
+            android:title="Report Bug"
+            android:icon="@drawable/ic_info"/>
+    </group>
+</menu>
