@@ -1,9 +1,14 @@
 package com.example.iniyan.prematixcointracker;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -38,13 +45,6 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity implements ILoadMore {
 
 
-//    public MainActivity() {
-//    }
-//
-//    public MainActivity(ICoinDetails iCoinDetails) {
-//        this.iCoinDetails = iCoinDetails;
-//    }
-
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     List<CoinModel> items = new ArrayList<>();
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
     OkHttpClient okHttpClient;
     Request request;
     SwipeRefreshLayout swipeRefreshLayout;
-    ICoinDetails iCoinDetails;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
 
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_to_refresh);
-        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.colorPrimaryDark), getResources().getColor(R.color.colorPrimary));
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_dark),
+                getResources().getColor(android.R.color.holo_red_dark));
 
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -192,24 +194,15 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
 
                         startActivity(new Intent(MainActivity.this, BuyCryptocurrency.class));
 
-                        Toast.makeText(getApplicationContext(), "buycryptocurrency", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.favourites:
-                        Toast.makeText(getApplicationContext(), "favourites", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.alarm:
-                        Toast.makeText(getApplicationContext(), "alarm", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
-                        break;
+
                     case R.id.cryptodaily:
-                        Toast.makeText(getApplicationContext(), "cryptodaily", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, CryptoDaily.class));
 
                         drawerLayout.closeDrawers();
                         break;
 
                     case R.id.report_bug:
-                        Toast.makeText(getApplicationContext(), "bug", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 
                         String[] TO = {"paypre@prematix.com"};
@@ -250,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
 
                         break;
                     case R.id.like:
-                        Toast.makeText(getApplicationContext(), "like", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.examp.three&hl=en")));
@@ -264,8 +256,7 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
             }
         });
         View header = navigationView.getHeaderView(0);
-//        TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
-//        tv_email.setText("raj.amalw@learn2crack.com");
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -320,6 +311,44 @@ public class MainActivity extends AppCompatActivity implements ILoadMore {
 
         startActivity(intent);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+
+
+        MenuItem search = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+        search(searchView);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                coinAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
 
 

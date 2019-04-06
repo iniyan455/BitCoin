@@ -5,9 +5,12 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import com.example.iniyan.prematixcointracker.Interface.ILoadMore;
 import com.example.iniyan.prematixcointracker.R;
@@ -15,11 +18,14 @@ import com.example.iniyan.prematixcointracker.model.CoinModel;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
 import static com.example.iniyan.prematixcointracker.Common.imageUrl;
 
-public class CoinAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class CoinAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
     private ILoadMore iLoadMore;
     private boolean isLoading;
@@ -27,11 +33,15 @@ public class CoinAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<CoinModel> items;
     private int visibleThreshold = 5, lastVisibleItem, totalItemCount;
 
+
+    private List<CoinModel> mitemListFilter;
+
+
     public CoinAdapter(RecyclerView recyclerView, Activity activity, List<CoinModel> items) {
 
         this.activity = activity;
         this.items = items;
-
+        this.mitemListFilter = items;
         final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -94,8 +104,6 @@ public class CoinAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holderItem.twenty_hours_change.setTextColor(item.getPercent_change_24h().contains("-") ? Color.parseColor("#FF0000") : Color.parseColor("#32CD32"));
 
 
-
-
     }
 
     @Override
@@ -116,4 +124,48 @@ public class CoinAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.items = coinModels;
         notifyDataSetChanged();
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                Log.e(TAG, "element charString" + charString);
+
+                if (charString.isEmpty()) {
+                    mitemListFilter = items;
+                } else {
+                    List<CoinModel> filteredList = new ArrayList<>();
+                    for (CoinModel row : items) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getSymbol().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    mitemListFilter = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mitemListFilter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mitemListFilter = (List<CoinModel>) filterResults.values;
+
+                for (CoinModel coinModel : mitemListFilter) {
+                    Log.e(TAG, "element" + coinModel.getName());
+                }
+                notifyDataSetChanged();
+
+            }
+        };
+    }
+
+
 }

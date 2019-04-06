@@ -28,5 +28,7 @@ public class CoinViewHolder extends RecyclerView.ViewHolder {
         twenty_hours_change = (TextView) itemView.findViewById(R.id.twentyFourHour);
         seven_days_change = (TextView) itemView.findViewById(R.id.sevenDay);
 
+
+
     }
 }

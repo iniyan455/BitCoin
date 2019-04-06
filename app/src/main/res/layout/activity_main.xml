@@ -32,6 +32,7 @@
                     android:background="?attr/colorPrimaryDark"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
                     app:title="@string/app_name"
+                    app:titleTextAppearance="@android:color/white"
                     app:titleTextColor="@android:color/white" />
 
             </android.support.design.widget.AppBarLayout>
@@ -41,7 +42,7 @@
                 android:id="@+id/coin_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_marginTop="?actionBarSize"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
